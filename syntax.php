@@ -46,7 +46,7 @@ class syntax_plugin_twitter extends DokuWiki_Syntax_Plugin {
 		foreach ($data as $entry) {
 			// dbglog($entry, "=================entry=================");
 			$text = $entry->text . " ";
-			$image = $entry->user->profile_image_url;
+			$image = $entry->user->profile_image_url_https;
 			$time = $entry->created_at;
 			$time = strtotime($time);
 			$time = $this->Timesince($time);
@@ -59,8 +59,8 @@ class syntax_plugin_twitter extends DokuWiki_Syntax_Plugin {
 				$from = $entry->user->screen_name;
 			}
 			$permalink = 'https://twitter.com/' . $from . '/status/' . $entry->id_str;
-			if (isset($entry->profile_image_url)) {
-				$image = $entry->profile_image_url;
+			if (isset($entry->profile_image_url_https)) {
+				$image = $entry->profile_image_url_https;
 			}
 			// get links
 			$search = array(
